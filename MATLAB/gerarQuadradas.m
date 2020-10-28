@@ -1,9 +1,8 @@
-function squad1 = gerarQuadradas(freq, ampl, duty, amostras)
+function squad1 = gerarQuadradas(tempo, ampl, duty, amostras)
 t = linspace(0,1,amostras);
 
-freq = randi([1, freq]);
-ampl = randi([1, ampl]);
-duty = randi([1, duty]);
+freq = 1/tempo;
+
 
 squad1 = ampl*square(2*pi*freq*t, duty);
 % adiciona a classe do sinal
