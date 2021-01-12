@@ -1,36 +1,63 @@
 clc;
 clear;
 
-amostras = 29001;
+amostras = 191;
 % Número de parametros na tabela
-nQuedas = 10;
-nShorts = 7;
+nQuedas = 12;
+nShorts = 9;
+nVariations = 12;
+
 voltageDips = cell(1,nQuedas);
 shortInterruption = cell(1,nShorts);
+voltageVariation = cell(1,nVariations);
 
 %% Gerar voltage dips
-voltageDips{1} = gerarDips(3.3,40,0.01,3);
-voltageDips{2} = gerarDips(3.3,40,0.03,3);
-voltageDips{3} = gerarDips(3.3,40,0.1,3);
-voltageDips{4} = gerarDips(3.3,40,0.3,3);
-voltageDips{5} = gerarDips(3.3,40,1,3);
+voltageDips{1} = gerarDips(3.3,40,0.1,2);
+voltageDips{2} = gerarDips(3.3,40,0.3,2);
+voltageDips{3} = gerarDips(3.3,40,1,2);
 
-voltageDips{6} = gerarDips(3.3,70,0.01,3);
-voltageDips{7} = gerarDips(3.3,70,0.03,3);
-voltageDips{8} = gerarDips(3.3,70,0.1,3);
-voltageDips{9} = gerarDips(3.3,70,0.3,3);
-voltageDips{10} = gerarDips(3.3,70,1,3);
+voltageDips{4} = gerarDips(3.3,70,0.1,2);
+voltageDips{5} = gerarDips(3.3,70,0.3,2);
+voltageDips{6} = gerarDips(3.3,70,1,2);
+
+voltageDips{7} = gerarDips(3.3,40,0.1,2);
+voltageDips{8} = gerarDips(3.3,40,0.3,2);
+voltageDips{9} = gerarDips(3.3,40,1,2);
+
+voltageDips{10} = gerarDips(3.3,70,0.1,2);
+voltageDips{11} = gerarDips(3.3,70,0.3,2);
+voltageDips{12} = gerarDips(3.3,70,1,2);
 
 
 %% Gerar Short interruption 
-shortInterruption{1} = gerarDips(3.3,100,0.001,3);
-shortInterruption{2} = gerarDips(3.3,100,0.003,3);
-shortInterruption{3} = gerarDips(3.3,100,0.01,3);
-shortInterruption{4} = gerarDips(3.3,100,0.03,3);
-shortInterruption{5} = gerarDips(3.3,100,0.1,3);
-shortInterruption{6} = gerarDips(3.3,100,0.3,3);
-shortInterruption{7} = gerarDips(3.3,100,1,3);
+shortInterruption{1} = gerarDips(3.3,100,0.1,2);
+shortInterruption{2} = gerarDips(3.3,100,0.3,2);
+shortInterruption{3} = gerarDips(3.3,100,1,2);
 
+shortInterruption{4} = gerarDips(3.3,100,0.1,2);
+shortInterruption{5} = gerarDips(3.3,100,0.3,2);
+shortInterruption{6} = gerarDips(3.3,100,1,2);
+
+shortInterruption{7} = gerarDips(3.3,100,0.1,2);
+shortInterruption{8} = gerarDips(3.3,100,0.3,2);
+shortInterruption{9} = gerarDips(3.3,100,1,2);
+
+% %% Gerar Voltage Variation 
+voltageVariation{1} = gerarDips(3.3,80,0.1,2);
+voltageVariation{2} = gerarDips(3.3,80,0.3,2);
+voltageVariation{3} = gerarDips(3.3,80,1,2);
+
+voltageVariation{4} = gerarDips(3.3,120,0.1,2);
+voltageVariation{5} = gerarDips(3.3,120,0.3,2);
+voltageVariation{6} = gerarDips(3.3,120,1,2);
+
+voltageVariation{7} = gerarDips(3.3,80,0.1,2);
+voltageVariation{8} = gerarDips(3.3,80,0.3,2);
+voltageVariation{9} = gerarDips(3.3,80,1,2);
+
+voltageVariation{10} = gerarDips(3.3,120,0.1,2);
+voltageVariation{11} = gerarDips(3.3,120,0.3,2);
+voltageVariation{12} = gerarDips(3.3,120,1,2);
 
 %% Gerar o header
 for i = 1:amostras
@@ -58,4 +85,8 @@ end
 
 for x = 1:nShorts
     dlmwrite('iec6100429.csv', shortInterruption{x}, 'precision', '%.3f', '-append')
+end
+
+for x = 1:nVariations
+    dlmwrite('iec6100429.csv', voltageVariation{x}, 'precision', '%.3f', '-append')
 end
