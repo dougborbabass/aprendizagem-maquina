@@ -1,0 +1,19 @@
+function transient = gerarTransient(ampl, amostras)
+
+t=0.1:0.01:amostras;
+
+% adiciona a classe do sinal
+classe = 4;
+
+
+
+transient = ampl*(heaviside(t))-ampl*(heaviside(t-0.5))+queda*(heaviside(t-(1/5000)));
+
+% adiciona a classe do sinal
+% transient(length(transient)+1) = classe;
+
+
+figure()
+plot(t,transient)
+
+end
