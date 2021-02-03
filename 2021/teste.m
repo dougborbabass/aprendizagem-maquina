@@ -1,16 +1,24 @@
 clc;
 clear;
 
-n = 0.1:(1/100e3):0.10191;
-ampl = 1000;
-y = ampl*heaviside(n);
-y(length(y)) = 4;
+t = 0:0.4:76;
+a1 = 0.0145;
+b1 = 2.8353;
+k1 = 1.037;
 
-for x = 1:(length(y)-1)
-    if mod(x,2) ~= 1
-       y(x) = 0;        
-    end
-end
+a2 = 0.1732;
+b2 = 0.0866;
+k2 = 4;
 
-plot(n, y)
-axis([-1 3 0 ampl+1])
+openCircuitVoltage = 1000*k1*(exp(-a1*t)-exp(-b1*t));
+shortCircuitCurrent = -1*1000*k2*(exp(-a2*t)-exp(-b2*t));
+
+
+subplot(2,1,1)
+plot(t,openCircuitVoltage);
+axis([-10 110 -10 1200]);
+grid
+subplot(2,1,2)
+plot(t,shortCircuitCurrent);
+axis([-10 110 -10 1200]);
+grid

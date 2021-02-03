@@ -13,6 +13,7 @@ shortInterruption = cell(1,nShorts);
 voltageVariation = cell(1,nVariations);
 transientes = cell(1,nTransients);
 
+% IEC 61000-4-29
 %% Gerar voltage dips
 voltageDips{1} = gerarDips(3.3,40,0.1,2);
 voltageDips{2} = gerarDips(3.3,40,0.3,2);
@@ -82,7 +83,7 @@ voltageVariation{17} = gerarDips(3.33,120,0.3,2);
 voltageVariation{18} = gerarDips(3.33,120,1,2);
 
 
-%% Gerar Transientes IEC 61000-4-4
+%% Gerar Transientes IEC 61000-4-4 fast transients/bursts.
 
 transientes{1} = gerarTransient(250);
 transientes{2} = gerarTransient(500);
