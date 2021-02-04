@@ -7,11 +7,15 @@ nQuedas = 18;
 nShorts = 12;
 nVariations = 18;
 nTransients = 8;
+nSourgeOpen = 12;
+nSourgeShort = 12;
 
 voltageDips = cell(1,nQuedas);
 shortInterruption = cell(1,nShorts);
 voltageVariation = cell(1,nVariations);
 transientes = cell(1,nTransients);
+sourgeOpen = cell(1,nSourgeOpen);
+sourgeShort = cell(1,nSourgeShort);
 
 % IEC 61000-4-29
 %% Gerar voltage dips
@@ -95,6 +99,39 @@ transientes{6} = gerarTransient(500);
 transientes{7} = gerarTransient(1e3);
 transientes{8} = gerarTransient(2e3);
 
+
+%% Gerar Transientes IEC 61000-4-5 Sourge.
+
+sourgeOpen{1} = gerarSourge(1,500);
+sourgeOpen{2} = gerarSourge(1,1000);
+sourgeOpen{3} = gerarSourge(1,2000);
+sourgeOpen{4} = gerarSourge(1,4000);
+
+sourgeOpen{5} = gerarSourge(1,500);
+sourgeOpen{6} = gerarSourge(1,1000);
+sourgeOpen{7} = gerarSourge(1,2000);
+sourgeOpen{8} = gerarSourge(1,4000);
+
+sourgeOpen{9} = gerarSourge(1,500);
+sourgeOpen{10} = gerarSourge(1,1000);
+sourgeOpen{11} = gerarSourge(1,2000);
+sourgeOpen{12} = gerarSourge(1,4000);
+
+sourgeShort{1} = gerarSourge(2,250);
+sourgeShort{2} = gerarSourge(2,500);
+sourgeShort{3} = gerarSourge(2,1000);
+sourgeShort{4} = gerarSourge(2,2000);
+
+sourgeShort{5} = gerarSourge(2,250);
+sourgeShort{6} = gerarSourge(2,500);
+sourgeShort{7} = gerarSourge(2,1000);
+sourgeShort{8} = gerarSourge(2,2000);
+
+sourgeShort{9} = gerarSourge(2,250);
+sourgeShort{10} = gerarSourge(2,500);
+sourgeShort{11} = gerarSourge(2,1000);
+sourgeShort{12} = gerarSourge(2,2000);
+
 %% Gerar o header
 for i = 1:amostras
     if i == amostras
@@ -129,4 +166,12 @@ end
 
 for x = 1:nTransients
     dlmwrite('iec6100429.csv', transientes{x}, 'precision', '%.3f', '-append')
+end
+
+for x = 1:nSourgeOpen
+    dlmwrite('iec6100429.csv', sourgeOpen{x}, 'precision', '%.3f', '-append')
+end
+
+for x = 1:nSourgeShort
+    dlmwrite('iec6100429.csv', sourgeShort{x}, 'precision', '%.3f', '-append')
 end
