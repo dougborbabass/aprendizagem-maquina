@@ -1,25 +1,22 @@
-clc;
-clear;
+close all;
+clear
+clc
 
-t = 0:1^-6:100^-6;
-a1 = 0.0145;
-b1 = 2.8353;
-k1 = 1.037;
+I1 = 16.6;
+I2 = 9.3;
+tau1 = 1.1e-9;
+tau2 = 2e-9;
+tau3 = 12e-9;
+tau4 = 37e-9;
+n = 1.8;
+t = 0:0.01e-9:500e-9;
 
-a2 = 0.1732;
-b2 = 0.0866;
-k2 = 4;
+i1 = (I1 / exp(-(tau1/tau2)*(n*tau2/tau1)^(1/n))*(((t/tau1).^n.*exp(-t/tau2))./(1+(t/tau1).^n)));
 
-% openCircuitVoltage = 1000*k1*(exp(-a1*t)-exp(-b1*t));
-% shortCircuitCurrent = 1000*k2*(1-exp(-a2*t)-exp(-b2*t));
+i2 = (I1 / exp(-(tau3/tau4)*(n*tau4/tau3)^(1/n))*(((t/tau3).^n.*exp(-t/tau4))./(1+(t/tau3).^n)));
 
-openCircuitVoltage = 1000*k1*(1-exp(-t/(0.4074^-6)))*(exp(-t/(68.22^-6)));
+i = i1 + i2;
 
-subplot(2,1,1)
-plot(t,openCircuitVoltage);
-% axis([-10 110 -10 1200]);
-% 
-% subplot(2,1,2)
-% plot(t,shortCircuitCurrent);
+ESD_P
 
-grid
+zoom xon

@@ -9,6 +9,7 @@ nVariations = 18;
 nTransients = 8;
 nSourgeOpen = 12;
 nSourgeShort = 12;
+nDischarge = 12;
 
 voltageDips = cell(1,nQuedas);
 shortInterruption = cell(1,nShorts);
@@ -16,6 +17,7 @@ voltageVariation = cell(1,nVariations);
 transientes = cell(1,nTransients);
 sourgeOpen = cell(1,nSourgeOpen);
 sourgeShort = cell(1,nSourgeShort);
+discharge = cell(1,nDischarge);
 
 % IEC 61000-4-29
 %% Gerar voltage dips
@@ -132,6 +134,23 @@ sourgeShort{10} = gerarSourge(2,500);
 sourgeShort{11} = gerarSourge(2,1000);
 sourgeShort{12} = gerarSourge(2,2000);
 
+%% Gerar Discharge IEC 61000-4-2.
+
+discharge{1} = gerarDischarge(0.5);
+discharge{2} = gerarDischarge(1);
+discharge{3} = gerarDischarge(1.5);
+discharge{4} = gerarDischarge(2);
+
+discharge{5} = gerarDischarge(0.5);
+discharge{6} = gerarDischarge(1);
+discharge{7} = gerarDischarge(1.5);
+discharge{8} = gerarDischarge(2);
+
+discharge{9} = gerarDischarge(0.5);
+discharge{10} = gerarDischarge(1);
+discharge{11} = gerarDischarge(1.5);
+discharge{12} = gerarDischarge(2);
+
 %% Gerar o header
 for i = 1:amostras
     if i == amostras
@@ -174,4 +193,8 @@ end
 
 for x = 1:nSourgeShort
     dlmwrite('iec6100429.csv', sourgeShort{x}, 'precision', '%.3f', '-append')
+end
+
+for x = 1:nDischarge
+    dlmwrite('iec6100429.csv', discharge{x}, 'precision', '%.3f', '-append')
 end

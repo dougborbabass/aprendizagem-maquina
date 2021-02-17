@@ -1,6 +1,9 @@
 function sourge = gerarSourge(type,ampl)
 
 % https://www.pscad.com/webhelp/Master_Library_Models/CSMF/Surge_Generators/Wavelet_Transformation_(WT).htm
+% https://teses.usp.br/teses/disponiveis/3/3143/tde-27022018-082038/publico/SadSandriniBorsoiCorr18.pdf
+% https://www.unit3compliance.co.uk/iec-surge-eft-generators-for-iso-7637-2-automotive-pre-compliance/
+
 
 t = 0:0.4:76;
 a1 = 0.0145;

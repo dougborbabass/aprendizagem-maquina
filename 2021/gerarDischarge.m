@@ -1,7 +1,4 @@
-close all;
-clear
-clc
-
+function discharge = gerarDischarge(ganho)
 
 %Make IEC 61000-4-2 current waveform
 
@@ -20,8 +17,10 @@ i1 = (I1 / exp(-(tau1/tau2)*(n*tau2/tau1)^(1/n)) * (((t/tau1).^n .* ...
 i2 = (I2 / exp(-(tau3/tau4)*(n*tau4/tau3)^(1/n)) * (((t/tau3).^n .* ...
     exp(-t/tau4))./(1+(t/tau3).^n)));
 
-i = 2*(i1 + i2);
+discharge = ganho*(i1 + i2);
 
-plot(t,i),grid;
+% adiciona a classe do sinal
+discharge(length(discharge)+1) = 7;
+end
 
-zoom xon
+% plot(t,i),grid;
