@@ -10,7 +10,8 @@ nTransients = 8;
 nSourgeOpen = 12;
 nSourgeShort = 12;
 nDischarge = 12;
-nConstante = 15;
+
+nConstante = 12;
 
 voltageDips = cell(1,nQuedas);
 shortInterruption = cell(1,nShorts);
@@ -154,21 +155,20 @@ discharge{11} = gerarDischarge(1.5);
 discharge{12} = gerarDischarge(2);
 
 % % Tensões constantes
-constante{1} = gerarConstante(0,0);
-constante{2} = gerarConstante(0,0);
-constante{3} = gerarConstante(0,0);
-constante{4} = gerarConstante(0,1);
-constante{5} = gerarConstante(0,1);
-constante{6} = gerarConstante(0,1);
-constante{7} = gerarConstante(1,2);
-constante{8} = gerarConstante(1,2);
-constante{9} = gerarConstante(1,2);
-constante{10} = gerarConstante(2,3.3);
-constante{11} = gerarConstante(2,3.3);
-constante{12} = gerarConstante(2,3.3);
-constante{13} = gerarConstante(3.3,3.3);
-constante{14} = gerarConstante(3.3,3.3);
-constante{15} = gerarConstante(3.3,3.3);
+constante{1} = gerarConstante(0,1);
+constante{1} = gerarConstante(0,1);
+constante{1} = gerarConstante(0,1);
+constante{1} = gerarConstante(0,1);
+constante{1} = gerarConstante(0,1);
+constante{1} = gerarConstante(0,1);
+constante{1} = gerarConstante(0,1);
+constante{1} = gerarConstante(0,1);
+constante{1} = gerarConstante(0,1);
+constante{1} = gerarConstante(0,1);
+constante{1} = gerarConstante(0,1);
+constante{1} = gerarConstante(0,1);
+constante{1} = gerarConstante(0,1);
+
 
 %% Gerar o header
 for i = 1:amostras
@@ -216,8 +216,4 @@ end
 
 for x = 1:nDischarge
     dlmwrite('iec6100429.csv', discharge{x}, 'precision', '%.3f', '-append')
-end
-
-for x = 1:nConstante
-    dlmwrite('iec6100429.csv', constante{x}, 'precision', '%.3f', '-append')
 end
